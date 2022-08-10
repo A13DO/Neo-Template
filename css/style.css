@@ -1,16 +1,27 @@
 body {
     height: 5000px;
     font-family: 'Open';
-    background: black;
     font-family: 'Open Sans', sans-serif;
+    background-color: #03080f;
+    /* #070c20 */
+}
+:root {
+    --main-color: #d278dd;
+}
+/* container */
+.container {
+width: 1070px;
+padding-left: 15px;
+padding-right: 15px;
+margin: auto;
 }
 /* Start Settings Box */
 .settings-box {
     position: fixed;
-    left: 0;
+    left: -200px;
     top: 0;
     background-color: #141536eb;
-    width: 0;
+    width: 200px;
     z-index: 1000 ;
     min-height: 100vh;
     transition: 0.3s;
@@ -18,20 +29,100 @@ body {
 .settings-box.open {
     left: 0;
 }
-.settings-box  .icon {
+.settings-box .toggle-settings {
     position: absolute;
     right: -30px ;
     top: 100px;
     background-color: #141536;
-    padding: 8px 0px ;
-    width: 30px;
     text-align: center;
     cursor: pointer;
 }
-.settings-box .settings-content {
+.settings-box .toggle-settings .icon {
+    padding: 8px 0px ;
+    width: 30px;
 }
+.settings-box .option-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.settings-box .option-box h4 {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
+.settings-box .option-box .colors-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+.settings-box .option-box .colors-list li {
+    /* background-color: #d278dd; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    opacity: 50%;
+    cursor: pointer;
+}
+.settings-box .option-box .colors-list .active {
+    opacity: 1;
+}
+
+.settings-box .option-box .colors-list li:first-child {
+    background-color: #d278dd;
+}
+.settings-box .option-box .colors-list li:nth-child(2) {
+    background-color: #522bff;
+}
+.settings-box .option-box .colors-list li:nth-child(3) {
+    background-color: #e300ff;
+}
+.settings-box .option-box .colors-list li:nth-child(4) {
+    background-color: #0be1cd;
+}
+.settings-box .option-box .colors-list li:nth-child(5) {
+    background-color: red;
+}
+.settings-box .random-backgrounds {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+}
+.settings-box .random-backgrounds h4{
+    
+}
+.settings-box .random-backgrounds .options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.settings-box .random-backgrounds span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #4348e9;
+    width: 55px;
+    height: 30px;
+    border-radius: 5px;
+}
+/* .settings-box .random-backgrounds span.no {
+    
+} */
+.settings-box .random-backgrounds span.active {
+    background-color: #181ee2 !important;
+}
+
 .landing {
-    background-image: url(/imgs/img-1.jpg);
+    background-image: url(/imgs/img-1.png);
     background-size: cover;
     /* background-position-y: -100px; */
     min-height: 100vh;
@@ -75,25 +166,31 @@ body {
 }
 
 .landing ul li {
-    color: #d278dd;
+    color: var(--main-color);
     /* background-color: #03feff; */
     background-color: transparent;
-    border: 2px solid #d278dd;
+    border: 2px solid var(--main-color);
     padding: 9px 13px;
     border-radius: 5px;
     /* font-weight: bold; */
     font-size: 1em;
-    box-shadow: 0px 0px 4px 0 #d278dd, inset 0px 0px 4px 0 #d278dd;
-    text-shadow: 0 0 2px #d278dd;
+    box-shadow: 0px 0px 4px 0 var(--main-color), inset 0px 0px 4px 0 var(--main-color);
+    text-shadow: 0 0 2px var(--main-color);
     transition: 0.5s;
     cursor: pointer;
 }
 
 .landing ul li:hover {
+    background-color: var(--main-color);
+    color: white;
+    box-shadow: 0px 0px 12px 0 var(--main-color);
+}
+/* Old Color */
+/* .landing ul li:hover {
     background-color: #d278dd;
     color: white;
     box-shadow: 0px 0px 12px 0 #eda9f5;
-}
+} */
 
 .landing .intro-text {
     color: white;
@@ -114,3 +211,109 @@ body {
 .landing .intro-text p {
     line-height: 1.4;
 }
+/* Start About Us */
+/* .about-us {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+}
+.about-us .info-box {
+    flex: 1;
+    padding: 30px;
+}
+.about-us .info-box h2 {
+    font-weight: bold;
+    font-size: 30px;
+    color: var(--main-color);
+    margin: 0 0 10px 0;
+}
+.about-us .info-box p {
+    line-height: 1.8;
+    color: #767676;
+    margin: 0;
+}
+.about-us .image-box {
+    flex: 1;
+    text-align: center;
+}
+.about-us .image-box img {
+    
+} */
+/* End About Us */
+.about-us {
+    padding-top: 140px;
+    padding-bottom: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+}
+.about-us::before {
+    content: "";
+    background-color: rgb(35 45 82);
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 8%;
+    left: 48%;
+    border: 20px solid rgb(35, 44, 82);
+    box-shadow: 0 0 0 45px inset;
+    box-sizing: border-box;
+    border-radius: 50%;
+    opacity: 30%;
+}
+.holder{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+.about-us img {
+    width: 350px;
+    position: absolute;
+    transform: translate(-140px,0px);
+}
+.about-us .info-box {
+    position: absolute;
+    background-color: #070c20;
+    color: white;
+    width: 350px;
+    height: 525px;
+    line-height: 1.8;
+    text-align: center;
+    transform: translate(150px,50px);
+    border: 2px solid #03080f;
+    /* transform: translate(280px,50px); */
+}
+.about-us .info-box h2 {
+    font-weight: bold;
+    color: var(--main-color);
+    margin: 20px 0 10px 0;
+}
+.about-us .info-box p {
+    margin: 0;
+    padding: 0 20px 20px;
+    font-size: 14px;
+    line-height: 2;
+
+}
+/* End About Us */
+
+/* Start Our skills*/
+.skills {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #040a22;
+    color: white;
+}
+.skills .skill-box {
+    background-color: #03080f;
+    padding: 10px;
+    width: 500px;
+    margin: 0 0 10px 0;
+}
+.skills .skill-box .skill-name{
+
+}
+
+/* End Our Skills*/
