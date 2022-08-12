@@ -306,14 +306,115 @@ margin: auto;
     background-color: #040a22;
     color: white;
 }
+.skills h2 {
+    color: var(--main-color);
+    text-align: center;
+}
 .skills .skill-box {
     background-color: #03080f;
-    padding: 10px;
-    width: 500px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 0 10px 0;
 }
-.skills .skill-box .skill-name{
-
+.skills .skill-box .skill-name {
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+}
+.skills .skill-box .skill-progress {
+    background-color: #050e1a;
+    width: calc(100% - 110px);
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skills .skill-box .skill-progress span {
+    position: absolute;
+    left: 0;
+    /* background-color: var(--main-color); */
+    background-color: blueviolet;  
+    width: 0;
+    height: 90%;
+    transition: all 0.5s;
 }
 
 /* End Our Skills*/
+
+/* Start Our Gallery*/
+.gallery {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: var(--main-color);
+    text-align: center;
+}
+.gallery .images-box {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap:30px;
+} 
+.gallery .images-box .image{
+    background-color: #040a22;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+} 
+.gallery .images-box img{
+    /* max-height: 100%;
+    width: 100%; */
+    max-height: 103px;
+    width: 252.5px;
+    cursor: pointer;
+} 
+.popup-overlay {
+    background-color: rgb(0 0 0 / 43%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+
+.popup-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    z-index: 1001;
+}
+.popup-box img {
+    max-width: 100%;
+}
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+/* End Our Gallery*/
+
+/*
+Delete 3 Elements 
+
+.popup-box
+.popup-box img 
+.stop-scrolling 
+*/
+
+
+
+/*
+
+    background-color: #040a22;
+    width: fit-content;
+    height: 103px;
+    border: 10px solid #040a22;
+    border-radius: 5px;
+    overflow: hidden;
+
+*/

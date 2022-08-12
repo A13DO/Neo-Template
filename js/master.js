@@ -54,7 +54,7 @@ function setColorFromStorage() {
 
 // Change Landing Background
 let landingPage = document.querySelector(".landing");
-let backgrounds = ["/imgs/img-1", "/imgs/img-2.jpg", "/imgs/img-3.jpg", "/imgs/img-4.jpg", "/imgs/img-5.jpg"]
+let backgrounds = ["/imgs/img-1.png", "/imgs/img-2.jpg", "/imgs/img-3.jpg", "/imgs/img-4.jpg", "/imgs/img-5.jpg"]
 
 
 let interval
@@ -64,7 +64,7 @@ function randomImgs() {
         interval = setInterval(() => {
             let numb = Math.floor(Math.random() * backgrounds.length);
             landingPage.style.backgroundImage = `url(${backgrounds[numb]})`
-        }, 1000);
+        }, 10000);
     } 
 
 // Random Background Options
@@ -113,7 +113,65 @@ function localStorageCheck() {
 
 
 
+// Progress Animation 
 
 
 
+let skills = document.querySelector(".skills");
 
+
+window.onscroll = function () {
+    // Offset
+    let skillsOffsetTop = skills.offsetTop;
+    console.log("------------")
+    console.log(`Skills Offset Top: ${skillsOffsetTop}`)
+    // Skills Outer height
+    let skillsOuterHeight = skills.offsetHeight;
+    console.log(`Skills Outer height: ${skillsOuterHeight}`)
+    // Window height
+    let windowHeight = this.innerHeight;
+    console.log(`Window height: ${windowHeight}`)
+    // Window Scroll Top
+    let windowScrollTop= this.pageYOffset;
+    console.log(`Window Scroll Top: ${windowScrollTop}`)
+
+    if (windowScrollTop > (skillsOffsetTop + skillsOuterHeight - windowHeight)) {
+        let progBoxs = document.querySelectorAll(".skills .skill-box .skill-progress span");
+        progBoxs.forEach
+        progBoxs.forEach(element => {
+            element.style.width = element.dataset.progress;
+        });
+    }
+}
+
+
+// Gallery
+
+let ourGallery = document.querySelectorAll(".gallery .images-box img")
+
+ourGallery.forEach(img => {
+    img.addEventListener("click", (e) => {
+        // Create Overlay element
+        let overlay = document.createElement("div")
+        overlay.className = "popup-overlay"
+        document.body.appendChild(overlay)
+        // Create popup Box element
+        let popupBox = document.createElement("div")
+        popupBox.className = "popup-box"
+        document.body.appendChild(popupBox)
+        // Create Image
+        let popupImg = document.createElement("img")
+        popupBox.appendChild(popupImg)
+        // Set Image Source
+        popupImg.src = img.src
+        document.body.className = "stop-scrolling"
+        
+        let overlayElement = document.querySelector(".popup-overlay")
+        let popupBoxElement = document.querySelector(".popup-box")
+        overlayElement.addEventListener("click", (e) => {
+            document.body.removeChild(popupBoxElement);
+            document.body.removeAttribute("class");
+            document.body.removeChild(overlayElement);
+        })
+    });
+});
